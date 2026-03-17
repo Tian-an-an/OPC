@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Storage Test</title>
+</head>
+<body>
+  <h1>LocalStorage 数据检查</h1>
+  <div id="output"></div>
+  
+  <script>
+    const keys = ['breakfast_products', 'breakfast_materials', 'breakfast_orders', 'breakfast_settings'];
+    const output = document.getElementById('output');
+    
+    keys.forEach(key => {
+      const data = localStorage.getItem(key);
+      const div = document.createElement('div');
+      div.style.margin = '20px 0';
+      div.style.padding = '10px';
+      div.style.border = '1px solid #ccc';
+      
+      if (data) {
+        try {
+          const parsed = JSON.parse(data);
+          div.innerHTML = `<h3>${key} ✅</h3><pre>${JSON.stringify(parsed, null, 2)}</pre>`;
+          div.style.background = '#e8f5e9';
+        } catch (e) {
+          div.innerHTML = `<h3>${key} ❌</h3><p>解析错误: ${e.message}</p>`;
+          div.style.background = '#ffebee';
+        }
+      } else {
+        div.innerHTML = `<h3>${key} ⚠️</h3><p>无数据（将使用默认值）</p>`;
+        div.style.background = '#fff3e0';
+      }
+      
+      output.appendChild(div);
+    });
+  </script>
+</body>
+</html>

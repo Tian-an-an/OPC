@@ -1,0 +1,12 @@
+{
+  "appId": "com.breakfast.pos",
+  "appName": "早餐店收银系统",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": true
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
